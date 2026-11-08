@@ -7,11 +7,16 @@ target_sources(QuakeLauncher
     PRIVATE
         Main.cpp
         DynamicLibrary/Interface.hpp
-        DynamicLibrary/Win32Implementation.cpp
 )
 
+if(WIN32)
+    target_sources(QuakeLauncher PRIVATE DynamicLibrary/Win32Implementation.cpp)
+elseif(LINUX)
+    target_sources(QuakeLauncher PRIVATE DynamicLibrary/LinuxImplementation.cpp)
+endif()
+
 if(MSVC)
-    target_compile_options(QuakeLauncher 
+    target_compile_options(QuakeLauncher
         PRIVATE 
             /W4 /permissive-)
 else()
@@ -24,4 +29,11 @@ endif()
 # undefined references.
 if (MINGW AND CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
     target_link_libraries(QuakeLauncher PRIVATE stdc++exp)
+endif()
+
+if(UNIX)
+    set_target_properties(QuakeLauncher PROPERTIES
+        BUILD_RPATH   "$ORIGIN"
+        INSTALL_RPATH "$ORIGIN"
+    )
 endif()

@@ -1,13 +1,14 @@
 #include <cstdlib>
-#include <print>
 
 #include "DynamicLibrary/Interface.hpp"
 
 int main()
 {
-    // TODO this does not work yet because the library is not being ubilt
-    QuakeLauncher::DynamicLibrary::Interface library{"Quake.dll"};
+    // TODO: Make it work on Windows
+    QuakeLauncher::DynamicLibrary::Interface library{"libQuake.so"};
 
-    std::println("Hello, World!");
+    const auto frame{library.Find<void (*)()>("Frame")};
+    frame();
+
     return EXIT_SUCCESS;
 }
