@@ -4,7 +4,9 @@ project(Quake VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
-add_library(Quake SHARED Main.cpp)
+add_library(Quake SHARED Main.cpp
+    Renderer/Device.hpp
+    Renderer/CommandList.hpp)
 
 if(MSVC)
     target_compile_options(Quake
