@@ -54,4 +54,10 @@ SymbolAddress Interface::FindSymbol(std::string_view name) const
     return reinterpret_cast<SymbolAddress>(address);
 }
 
+/// Appends extension that is used on this platform for dynamic libraries.
+std::string FormatName(std::string_view original)
+{
+    return std::string{original} + ".dll";
+}
+
 } // namespace QuakeLauncher::DynamicLibrary

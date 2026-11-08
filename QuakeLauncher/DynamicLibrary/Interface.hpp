@@ -41,4 +41,7 @@ class Interface
     std::unique_ptr<void, HandleDeleter> m_handle;
 };
 
+/// Appends extension that is used on this platform for dynamic libraries.
+std::string FormatName(std::string_view original);
+
 }; // namespace QuakeLauncher::DynamicLibrary

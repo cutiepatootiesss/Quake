@@ -6,7 +6,11 @@ set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 add_library(Quake SHARED Main.cpp
     Renderer/Device.hpp
-    Renderer/CommandList.hpp)
+    Renderer/CommandList.hpp
+    Renderer/Pipeline.hpp
+    Renderer/Texture.hpp
+    Renderer/Buffer.hpp
+)
 
 if(MSVC)
     target_compile_options(Quake
