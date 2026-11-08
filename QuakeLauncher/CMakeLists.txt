@@ -6,6 +6,8 @@ add_executable(QuakeLauncher)
 target_sources(QuakeLauncher
     PRIVATE
         Main.cpp
+        DynamicLibrary/Interface.hpp
+        DynamicLibrary/Win32Implementation.cpp
 )
 
 if(MSVC)
